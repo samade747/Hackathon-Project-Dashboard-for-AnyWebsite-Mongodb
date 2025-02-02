@@ -5,17 +5,14 @@ export function middleware(req: NextRequest) {
   const url = req.nextUrl;
   const pathname = url.pathname;
 
-  // Protect /admin routes
+  // Protect /admin
   if (pathname.startsWith("/admin")) {
-    // Check session cookie
     const cookie = req.cookies.get("session")?.value;
     if (!cookie) {
-      // Not logged in
       return NextResponse.redirect(new URL("/admin/(auth)/login", req.url));
     }
 
-    // decode
-    let session: { userId: string; role: string };
+    let session;
     try {
       const jsonStr = Buffer.from(cookie, "base64").toString("utf8");
       session = JSON.parse(jsonStr);
@@ -24,50 +21,47 @@ export function middleware(req: NextRequest) {
       return NextResponse.redirect(new URL("/admin/(auth)/login", req.url));
     }
 
-    const userRole = session.role;
+    const role = session.role;
 
-    // If admin or manager => access all
-    if (["admin", "manager"].includes(userRole)) {
+    // admin or manager => full
+    if (["admin", "manager"].includes(role)) {
       return NextResponse.next();
     }
 
-    // If "editor" => can access /admin/products, /admin/dashboard
-    if (userRole === "editor") {
+    // editor => /admin/products, /admin/dashboard
+    if (role === "editor") {
       if (
         pathname.startsWith("/admin/products") ||
         pathname.startsWith("/admin/dashboard")
       ) {
         return NextResponse.next();
-      } else {
-        return NextResponse.redirect(new URL("/admin/no-access", req.url));
       }
+      return NextResponse.redirect(new URL("/admin/no-access", req.url));
     }
 
-    // If "orderer" => can access /admin/orders
-    if (userRole === "orderer") {
+    // orderer => /admin/orders, /admin/dashboard
+    if (role === "orderer") {
       if (
         pathname.startsWith("/admin/orders") ||
         pathname.startsWith("/admin/dashboard")
       ) {
         return NextResponse.next();
-      } else {
-        return NextResponse.redirect(new URL("/admin/no-access", req.url));
       }
+      return NextResponse.redirect(new URL("/admin/no-access", req.url));
     }
 
-    // If "accountant" => can access /admin/revenue
-    if (userRole === "accountant") {
+    // accountant => /admin/revenue, /admin/dashboard
+    if (role === "accountant") {
       if (
         pathname.startsWith("/admin/revenue") ||
         pathname.startsWith("/admin/dashboard")
       ) {
         return NextResponse.next();
-      } else {
-        return NextResponse.redirect(new URL("/admin/no-access", req.url));
       }
+      return NextResponse.redirect(new URL("/admin/no-access", req.url));
     }
 
-    // Otherwise, no access
+    // otherwise no
     return NextResponse.redirect(new URL("/admin/no-access", req.url));
   }
 
