@@ -9,7 +9,7 @@ export function middleware(req: NextRequest) {
   if (pathname.startsWith("/admin")) {
     const cookie = req.cookies.get("session")?.value;
     if (!cookie) {
-      return NextResponse.redirect(new URL("/admin/(auth)/login", req.url));
+      return NextResponse.redirect(new URL("/admin/login", req.url));
     }
 
     let session;
@@ -18,7 +18,7 @@ export function middleware(req: NextRequest) {
       session = JSON.parse(jsonStr);
     } catch (err) {
       console.error("Invalid session cookie");
-      return NextResponse.redirect(new URL("/admin/(auth)/login", req.url));
+      return NextResponse.redirect(new URL("/admin/login", req.url));
     }
 
     const role = session.role;

@@ -11,9 +11,10 @@
   "dependencies": {
     "@sanity/image-url": "^1.1.0",
     "@sanity/vision": "^3.68.3",
+    "bcrypt": "^5.1.1",
     "chart.js": "^4.4.7",
     "clsx": "^2.1.1",
-    "mongoose": "^7.5.0",
+    "mongoose": "^7.8.6",
     "nanoid": "^5.0.9",
     "next": "15.1.6",
     "next-sanity": "^9.8.31",
@@ -27,6 +28,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@types/bcrypt": "^5.0.2",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

@@ -2,12 +2,12 @@
 import mongoose, { Schema, model, models } from "mongoose";
 
 /**
- * Roles we might have: "admin", "manager", "editor", "orderer", "accountant"
+ * Roles: admin, manager, editor, orderer, accountant
  */
 const UserSchema = new Schema({
   email: { type: String, unique: true, required: true },
   passwordHash: { type: String, required: true },
-  role: { type: String, default: "editor" }, // e.g. admin, manager, etc.
+  role: { type: String, default: "editor" },
   twoFactorEnabled: { type: Boolean, default: false },
   twoFactorSecret: { type: String, default: "" },
 });

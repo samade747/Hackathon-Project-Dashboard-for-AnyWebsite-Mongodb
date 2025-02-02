@@ -2,7 +2,7 @@
 import mongoose from "mongoose";
 
 if (!process.env.MONGODB_URI) {
-  throw new Error("Please define the MONGODB_URI in .env.local");
+  throw new Error("Please define MONGODB_URI in .env.local");
 }
 
 let cached = (global as any).mongoose;
