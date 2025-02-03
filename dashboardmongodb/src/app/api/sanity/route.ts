@@ -1,6 +1,6 @@
 // app/api/sanity/route.ts
 import { NextResponse } from "next/server";
-import { sanityClient } from "../sanity/sanityClient"; // Adjust path as needed
+import { sanityClient } from "./sanityClient"; // Adjust path as needed
 
 export async function GET(request: Request) {
   // Parse query from the URL, e.g. /api/sanity?query=*[_type=="product"]

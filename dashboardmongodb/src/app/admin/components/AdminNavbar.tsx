@@ -11,8 +11,8 @@ export default function AdminNavbar({ setSidebarOpen }: AdminNavbarProps) {
   const handleLogout = async () => {
     try {
       await fetch("/api/auth/logout");
-      alert("Logged out");
-      window.location.href = "/admin/(auth)/login";
+      alert("Logged out successfully");
+      window.location.href = "/";
     } catch (err) {
       console.error(err);
     }
