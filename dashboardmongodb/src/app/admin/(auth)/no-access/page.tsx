@@ -1,3 +1,5 @@
+// app/admin/no-access/page.tsx
+
 export default function NoAccessPage() {
   return (
     <div className="p-4">

@@ -45,7 +45,7 @@ export function middleware(req: NextRequest) {
       if (pathname.startsWith("/admin/products") || pathname.startsWith("/admin/dashboard")) {
         return NextResponse.next();
       }
-      return NextResponse.redirect(new URL("/admin/no-access", req.url));
+      return NextResponse.redirect(new URL("/no-access/", req.url));
     }
 
     // e.g. orderer => /admin/orders + /admin/dashboard
@@ -53,7 +53,7 @@ export function middleware(req: NextRequest) {
       if (pathname.startsWith("/admin/orders") || pathname.startsWith("/admin/dashboard")) {
         return NextResponse.next();
       }
-      return NextResponse.redirect(new URL("/admin/no-access", req.url));
+      return NextResponse.redirect(new URL("/no-access", req.url));
     }
 
     // e.g. accountant => /admin/revenue + /admin/dashboard
@@ -61,11 +61,11 @@ export function middleware(req: NextRequest) {
       if (pathname.startsWith("/admin/revenue") || pathname.startsWith("/admin/dashboard")) {
         return NextResponse.next();
       }
-      return NextResponse.redirect(new URL("/admin/no-access", req.url));
+      return NextResponse.redirect(new URL("/no-access", req.url));
     }
 
     // Otherwise => not authorized
-    return NextResponse.redirect(new URL("/admin/no-access", req.url));
+    return NextResponse.redirect(new URL("/no-access", req.url));
   }
 
   // If not /admin route => do nothing special
