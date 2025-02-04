@@ -57,21 +57,21 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }: SidebarProps) {
             <span>Products</span>
           </Link>
           <Link
-            href="/admin/users"
+            href="/admin/dashboard"
             className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-200"
           >
             <FaUsers className="mr-3 h-5 w-5" />
             <span>Users</span>
           </Link>
           <Link
-            href="/admin/roles" // optionally
+            href="/admin/dashboard" // optionally
             className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-200"
           >
             <FaShieldAlt className="mr-3 h-5 w-5" />
             <span>Roles</span>
           </Link>
           <Link
-            href="/admin/revenue"
+            href="/admin/dashboard"
             className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-200"
           >
             <FaMoneyBillWave className="mr-3 h-5 w-5" />
