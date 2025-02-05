@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 // app/api/products/bulk/route.ts
 
 import { NextResponse } from "next/server";

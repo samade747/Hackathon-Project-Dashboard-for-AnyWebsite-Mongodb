@@ -1,3 +1,4 @@
+/* eslint-disable */
 // lib/db.ts
 import mongoose from "mongoose";
 
