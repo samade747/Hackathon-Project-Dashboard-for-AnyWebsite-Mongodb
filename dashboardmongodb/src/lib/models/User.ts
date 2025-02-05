@@ -1,4 +1,5 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import mongoose, { Schema, model, models } from "mongoose";
 
 /**
