@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 //src/app/admin/products/bulk/page.tsx
 "use client";
 
